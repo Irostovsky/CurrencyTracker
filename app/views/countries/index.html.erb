@@ -1,15 +1,5 @@
 <section>
-  <div id="visited_countries_chart" class="simple_pie_chart" width='300px' height='100px'>
-    <table>
-      <tr>
-        <th>Visited</th>
-        <td><%= Country.visited.count %></td>
-      </tr><tr>
-        <th>Not Visited</th>
-        <td><%= Country.not_visited.count %></td>
-      </tr>
-    </table>
-  </div>
+  <%= render '/shared/visited_countries_chart' %>
 
   <h1>Countries</h1>
 
@@ -26,7 +16,7 @@
     <tr>
       <td><%= country.name %></td>
       <td><%= country.code %></td>
-      <td><%= country.visited? ? 'Visited' : 'Not Visited' %></td>
+      <td><%= country.visited?(current_user) ? 'Visited' : 'Not Visited' %></td>
       <td><%= link_to 'Show', country %></td>
       <td><%= link_to 'Edit', edit_country_path(country) %></td>
     </tr>

@@ -8,15 +8,15 @@ class Currency < ActiveRecord::Base
 
   belongs_to :country
 
-  def self.collected
-    all.select {|currency| currency.collected? }
+  def self.collected(user)
+    all.select {|currency| currency.collected?(user) }
   end
 
-  def self.not_collected
-    all.reject {|currency| currency.collected? }
+  def self.not_collected(user)
+    all.reject {|currency| currency.collected?(user) }
   end
 
-  def collected?
-    country.nil? ? false : country.visited?
+  def collected?(user)
+    country.nil? ? false : country.visited?(user)
   end
 end
