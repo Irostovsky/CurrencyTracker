@@ -6,6 +6,7 @@ gem 'savon'
 gem 'nokogiri'
 
 group :development do
+  gem 'mysql'
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'capybara'

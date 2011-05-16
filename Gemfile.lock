@@ -76,6 +76,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mysql (2.8.1)
     nokogiri (1.4.4)
     ntlm-http (0.1.1)
     polyglot (0.3.1)
@@ -126,6 +127,7 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
+  mysql
   nokogiri
   rails (= 3.0.7)
   savon
