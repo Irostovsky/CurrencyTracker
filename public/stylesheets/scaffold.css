@@ -70,8 +70,12 @@ table td {
 
 /* Flash Notices / Errors */
 
-#notice {
+.notice {
   color: green;
+}
+
+.alert {
+  color: red;
 }
 
 .field_with_errors {
