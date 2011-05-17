@@ -1,0 +1,8 @@
+<tr id="country_<%= country.id %>">
+  <td><%= country.name %></td>
+  <td><%= country.code %></td>
+  <td><%= country.visited?(current_user) ? 'Visited' : 'Not Visited' %></td>
+  <td><%= link_to 'Show', country %></td>
+  <td><%= link_to 'Edit', edit_country_path(country) %></td>
+  <td><%= check_box_tag country.id, 1, country.visited?(current_user), :disabled => country.visited?(current_user) %></td>
+</tr>

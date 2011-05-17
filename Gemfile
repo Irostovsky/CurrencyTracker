@@ -12,4 +12,5 @@ group :development do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'jquery-rails', '>= 1.0.3'
 end

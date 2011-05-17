@@ -6,4 +6,9 @@ module ApplicationHelper
       link_to("Sign in", new_user_session_path) << " or " << link_to("Register", new_user_registration_path) 
     end  
   end
+  
+  def e params
+    escape_javascript params
+  end
+  
 end

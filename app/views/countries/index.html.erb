@@ -3,6 +3,7 @@
 
   <h1>Countries</h1>
 
+<%= form_tag visit_countries_path, :method => :put, :remote => true do %>
   <table>
     <tr>
       <th>Name</th>
@@ -10,16 +11,12 @@
       <th>Status</th>
       <th></th>
       <th></th>
+      <th><%= submit_tag "Visit" %></th>
     </tr>
 
   <% @countries.each do |country| %>
-    <tr>
-      <td><%= country.name %></td>
-      <td><%= country.code %></td>
-      <td><%= country.visited?(current_user) ? 'Visited' : 'Not Visited' %></td>
-      <td><%= link_to 'Show', country %></td>
-      <td><%= link_to 'Edit', edit_country_path(country) %></td>
-    </tr>
+    <%= render 'country_row', :country => country %>
   <% end %>
   </table>
+<% end -%>
 </section>

@@ -1,0 +1,3 @@
+<% @visited_countries.each do |country| %>
+  $('#country_<%= country.id %>').replaceWith("<%=e render 'countries/country_row', :country => country %>");
+<% end %>
