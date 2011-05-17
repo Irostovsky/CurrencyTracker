@@ -11,7 +11,7 @@
 
 <p>
   <b>Status:</b>
-  <%= @currency.collected? ? 'Collected' : 'Not Collected' %>
+  <%= @currency.collected?(current_user) ? 'Collected' : 'Not Collected' %>
 </p>
 
 <p>

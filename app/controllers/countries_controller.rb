@@ -26,6 +26,7 @@ class CountriesController < ApplicationController
   # GET /countries/1/edit
   def edit
     @country = Country.find(params[:id])
+    @country.visited_by_user = @country.visited? current_user
   end
 
   # POST /countries
@@ -51,6 +52,7 @@ class CountriesController < ApplicationController
 
     respond_to do |format|
       if @country.update_attributes(params[:country])
+        @country.change_visited_by_user(current_user)
         format.html { redirect_to(@country, :notice => 'Country was successfully updated.') }
         format.xml  { head :ok }
       else

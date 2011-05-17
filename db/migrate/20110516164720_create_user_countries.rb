@@ -1,8 +1,8 @@
 class CreateUserCountries < ActiveRecord::Migration
   def self.up
     create_table :user_countries do |t|
-      t.references :user
-      t.references :country
+      t.belongs_to :user
+      t.string :country_id
       t.timestamps
     end
   end
