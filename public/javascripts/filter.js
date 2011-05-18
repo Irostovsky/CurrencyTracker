@@ -5,8 +5,8 @@ $(document).ready(function() {
       $.uiTableFilter( theTable, this.value, "Name");
   });
   
-  // $('.simple_pie_chart').livequery(function(){
-  //   SimplePieChart.initialize(this);
-  // })
-  
 })
+
+var checkAllItems = function(){
+  $("table.items tr:visible input").attr('checked', true);
+};
