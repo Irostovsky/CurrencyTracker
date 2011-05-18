@@ -2,4 +2,5 @@
   $('#country_<%= country.id %>').replaceWith("<%= e render 'countries/country_row', :country => country %>");
 <% end %>
 
-$('#visited_countries_chart').replaceWith("<%= e render '/countries/visited_countries_chart' %>")
+$('#visited_countries_chart').replaceWith("<%= e render '/countries/visited_countries_chart' %>");
+$('.line_chart').html('<%= country_progress_chart %>');

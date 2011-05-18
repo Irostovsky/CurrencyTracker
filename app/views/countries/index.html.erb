@@ -1,6 +1,7 @@
 <section>
   <%= render 'visited_countries_chart' %>
-
+  <div class='line_chart'><%= country_progress_chart %></div>
+  
   <h1>Countries</h1>
   
   <%= form_tag visit_countries_path, :method => :put, :remote => true do %>

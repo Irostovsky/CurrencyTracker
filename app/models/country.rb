@@ -24,4 +24,5 @@ class Country < ActiveRecord::Base
     self.user_countries.create :user => user if visited_by_user == "1" && !visited?(user)
     self.user_country(user).destroy if visited_by_user == "0" && visited?(user)
   end
+  
 end
