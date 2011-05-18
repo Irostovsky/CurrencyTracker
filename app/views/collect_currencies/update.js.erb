@@ -1,0 +1,3 @@
+<% @collected_currencies.each do |currency| %>
+  $('#currency_<%= currency.id %>').replaceWith("<%=e render 'currencies/currency_row', :currency => currency %>");
+<% end %>

@@ -8,6 +8,7 @@ CurrencyTracker::Application.routes.draw do
   resources :currencies, :only => [:index, :show]
   
   resource :visit_countries, :only => [:update]
+  resource :collect_currencies, :only => [:update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

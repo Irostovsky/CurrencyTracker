@@ -13,21 +13,19 @@
 
   <h1>Currencies</h1>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Status</th>
-      <th></th>
-    </tr>
+  <%= form_tag collect_currencies_path, :method => :put, :remote => true do %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Status</th>
+        <th></th>
+        <th><%= submit_tag "Collect" %></th>
+      </tr>
 
-  <% @currencies.each do |currency| %>
-    <tr>
-      <td><%= currency.name %></td>
-      <td><%= currency.code %></td>
-      <td><%= currency.collected?(current_user) ? 'Collected' : 'Not Collected' %></td>
-      <td><%= link_to 'Show', currency %></td>
-    </tr>
-  <% end %>
-  </table>
+    <% @currencies.each do |currency| %>
+      <%= render 'currency_row', :currency => currency %>
+    <% end %>
+    </table>
+  <% end -%>  
 </section>
