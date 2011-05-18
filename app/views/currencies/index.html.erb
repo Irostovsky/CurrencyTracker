@@ -4,18 +4,21 @@
   <h1>Currencies</h1>
 
   <%= form_tag collect_currencies_path, :method => :put, :remote => true do %>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Status</th>
-        <th></th>
-        <th><%= submit_tag "Collect" %></th>
-      </tr>
-
-    <% @currencies.each do |currency| %>
-      <%= render 'currency_row', :currency => currency %>
-    <% end %>
+    <table class="items">
+      <thead>
+        <tr>
+          <th>Name <%= text_field_tag :filter %></th>
+          <th>Code</th>
+          <th>Status</th>
+          <th></th>
+          <th><%= submit_tag "Collect" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @currencies.each do |currency| %>
+          <%= render 'currency_row', :currency => currency %>
+        <% end %>
+      </tbody>
     </table>
   <% end -%>  
 </section>

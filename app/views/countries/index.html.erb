@@ -2,21 +2,24 @@
   <%= render 'visited_countries_chart' %>
 
   <h1>Countries</h1>
-
-<%= form_tag visit_countries_path, :method => :put, :remote => true do %>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Status</th>
-      <th></th>
-      <th></th>
-      <th><%= submit_tag "Visit" %></th>
-    </tr>
-
-  <% @countries.each do |country| %>
-    <%= render 'country_row', :country => country %>
-  <% end %>
-  </table>
-<% end -%>
+  
+  <%= form_tag visit_countries_path, :method => :put, :remote => true do %>
+    <table class="items">
+      <thead>
+        <tr>
+          <th>Name <%= text_field_tag :filter %></th>
+          <th>Code</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+          <th><%= submit_tag "Visit" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @countries.each do |country| %>
+          <%= render 'country_row', :country => country %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end -%>
 </section>

@@ -79,7 +79,4 @@ $(document).ready(function() {
     SimplePieChart.initialize(this);
   })
   
-  // $('.simple_pie_chart').each(function() {
-  //   SimplePieChart.initialize(this);
-  // });
 })
