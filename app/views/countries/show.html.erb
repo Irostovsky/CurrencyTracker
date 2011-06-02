@@ -1,4 +1,3 @@
-
 <p>
   <b>Name:</b>
   <%= @country.name %>
@@ -11,7 +10,7 @@
 
 <p>
   <b>Status:</b>
-  <%= @country.visited?(current_user) ? 'Visited' : 'Not Visited' %>
+  <%= @country.visited_at ? 'Visited' : 'Not Visited' %>
 </p>
 
 <p>

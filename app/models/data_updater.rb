@@ -10,19 +10,12 @@ class DataUpdater
     end
   end
 
-  def update
+  def parsed_response
     response = get_soap_response
     return nil if response.nil?
-
-    data = parse_response(response)
-    data.keys.each do |key| 
-      data[key].each do |attributes|
-        object = key.to_s.classify.constantize.find_or_create_by_code(attributes)
-        
-      end
-    end
+    parse_response(response)
   end
-
+  
   private
   def get_soap_response
     begin

@@ -1,22 +1,15 @@
 class Currency < ActiveRecord::Base
-  set_primary_key :code
-  attr_accessible :name, :code, :country_id
-
-  validates_presence_of :name
-  validates_presence_of :code
-  validates_uniqueness_of :code, :allow_blank => true
+  validates_presence_of :name, :code
+  validates_uniqueness_of :code, :scope => :country_id
 
   belongs_to :country
+  
+  scope :collected, joins(:country).where('countries.visited_at is not ?', nil)
+  scope :not_collected, joins(:country).where('countries.visited_at is ?', nil)
 
-  def self.collected(user)
-    all.select {|currency| currency.collected?(user) }
+  
+  def collected?
+    country.visited_at
   end
 
-  def self.not_collected(user)
-    all.reject {|currency| currency.collected?(user) }
-  end
-
-  def collected?(user)
-    country.nil? ? false : country.visited?(user)
-  end
 end

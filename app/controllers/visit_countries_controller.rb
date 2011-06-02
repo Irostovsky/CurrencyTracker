@@ -3,11 +3,10 @@ class VisitCountriesController < ApplicationController
 
   def update
     @visited_countries = []
-    params.each do |code, value|
-      country = Country.find_by_code code
+    params.each do |id, value|
+      country = current_user.countries.find_by_id id
       if country
-        country.visited_by_user = value
-        country.change_visited_by_user(current_user)
+        country.update_attributes :visited => value
         @visited_countries << country
       end
     end

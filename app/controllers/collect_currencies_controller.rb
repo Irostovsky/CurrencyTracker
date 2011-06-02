@@ -3,12 +3,11 @@ class CollectCurrenciesController < ApplicationController
 
   def update
     @collected_currencies = []
-    params.each do |code, value|
-      currency = Currency.find_by_code(code)
+    params.each do |id, value|
+      currency = current_user.currencies.find_by_id id
       if currency
         country = currency.country
-        country.visited_by_user = value
-        country.change_visited_by_user(current_user)
+        country.update_attributes :visited => value
         @collected_currencies << currency
       end
     end
