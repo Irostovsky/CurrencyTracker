@@ -1,3 +1,5 @@
+require 'gchart'
+
 module ApplicationHelper
   def sign_in_link
     if user_signed_in? 
@@ -16,5 +18,11 @@ module ApplicationHelper
     x_data = data.keys.join("|")
     y_data = data.values.map{|i| i.size}.inject([]){|res, i| res << i + res.last.to_i; res }.join(",")
     image_tag("https://chart.googleapis.com/chart?cht=lc&chs=400x200&chd=t:#{y_data}&chxt=x,y&chxl=0:|#{x_data}|", :alt => "chart")
+  end
+  
+  def visited_countries_chart
+    image_tag Gchart.pie_3d :labels => ["Visited", "Not visited"], 
+      :data => [current_user.countries.visited.count, current_user.countries.not_visited.count], 
+      :size => "400x100"
   end
 end

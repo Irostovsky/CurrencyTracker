@@ -6,6 +6,7 @@ gem 'savon'
 gem 'nokogiri'
 
 group :development do
+  gem 'googlecharts'
   gem 'devise'
   gem 'mysql'
   gem 'cucumber'
