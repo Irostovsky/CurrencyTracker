@@ -2,4 +2,4 @@
   $('#currency_<%= currency.id %>').replaceWith("<%=e render 'currencies/currency_row', :currency => currency %>");
 <% end %>
 
-$('#collected_currencies_chart').replaceWith("<%= e render '/currencies/collected_currencies_chart' %>")
+$('.pie_chart').html('<%= collected_currencies_chart %>');

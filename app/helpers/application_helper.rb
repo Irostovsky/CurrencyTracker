@@ -25,4 +25,10 @@ module ApplicationHelper
       :data => [current_user.countries.visited.count, current_user.countries.not_visited.count], 
       :size => "400x100"
   end
+  
+  def collected_currencies_chart
+    image_tag Gchart.pie_3d :labels => ["Collected", "Not collected"], 
+      :data => [current_user.currencies.collected.count, current_user.currencies.not_collected.count], 
+      :size => "400x100"
+  end
 end
