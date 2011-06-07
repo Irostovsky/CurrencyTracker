@@ -24,6 +24,18 @@ module ApplicationHelper
             :size => '400x200'
              )
   end
+
+  def currency_progress_chart
+    data = current_user.currencies.collected.group_by(&:visited_at)
+    x_data = data.keys
+    y_data = data.values.map{|i| i.size}.inject([]){|res, i| res << i + res.last.to_i; res }
+    image_tag Gchart.line(
+            :data => y_data,
+            :axis_with_labels => 'y', 
+            :labels => x_data,
+            :size => '400x200'
+             )
+  end
   
   def visited_countries_chart
     image_tag Gchart.pie_3d :labels => ["Visited", "Not visited"], 
