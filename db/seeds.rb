@@ -8,3 +8,13 @@
   User.destroy_all
   User.create :email => 'test1@mailinator.com', :password => '123123'
   User.create :email => 'test2@mailinator.com', :password => '123123'
+  
+  # insert visited_at
+  {
+    1.month.ago => 5, 
+    2.week.ago => 12, 
+    2.day.ago =>  10,
+    1.day.ago => 5
+  }.each do |date, count|
+    User.first.countries.not_visited.limit(count).each{|c| c.update_attributes :visited_at => date.to_date }
+  end

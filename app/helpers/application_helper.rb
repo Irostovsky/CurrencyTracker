@@ -14,10 +14,15 @@ module ApplicationHelper
   end
   
   def country_progress_chart
-    data = current_user.countries.group_by(&:visited_at)
-    x_data = data.keys.join("|")
-    y_data = data.values.map{|i| i.size}.inject([]){|res, i| res << i + res.last.to_i; res }.join(",")
-    image_tag("https://chart.googleapis.com/chart?cht=lc&chs=400x200&chd=t:#{y_data}&chxt=x,y&chxl=0:|#{x_data}|", :alt => "chart")
+    data = current_user.countries.visited.order(:visited_at).group_by(&:visited_at)
+    x_data = data.keys
+    y_data = data.values.map{|i| i.size}.inject([]){|res, i| res << i + res.last.to_i; res }
+    image_tag Gchart.line(
+            :data => y_data,
+            :axis_with_labels => 'y', 
+            :labels => x_data,
+            :size => '400x200'
+             )
   end
   
   def visited_countries_chart
