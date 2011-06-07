@@ -14,27 +14,11 @@ module ApplicationHelper
   end
   
   def country_progress_chart
-    data = current_user.countries.visited.order(:visited_at).group_by(&:visited_at)
-    x_data = data.keys
-    y_data = data.values.map{|i| i.size}.inject([]){|res, i| res << i + res.last.to_i; res }
-    image_tag Gchart.line(
-            :data => y_data,
-            :axis_with_labels => 'y', 
-            :labels => x_data,
-            :size => '400x200'
-             )
+    line_chart current_user.countries.visited.order(:visited_at)
   end
 
   def currency_progress_chart
-    data = current_user.currencies.collected.group_by(&:visited_at)
-    x_data = data.keys
-    y_data = data.values.map{|i| i.size}.inject([]){|res, i| res << i + res.last.to_i; res }
-    image_tag Gchart.line(
-            :data => y_data,
-            :axis_with_labels => 'y', 
-            :labels => x_data,
-            :size => '400x200'
-             )
+    line_chart current_user.currencies.collected
   end
   
   def visited_countries_chart
@@ -48,4 +32,20 @@ module ApplicationHelper
       :data => [current_user.currencies.collected.count, current_user.currencies.not_collected.count], 
       :size => "400x100"
   end
+  
+private
+  
+  def line_chart(collection)
+    data = collection.group_by(&:visited_at)
+    x_data = data.keys
+    y_data = data.values.map{|i| i.size}.inject([]){|res, i| res << i + res.last.to_i; res }
+    image_tag Gchart.line(
+            :data => y_data,
+            :axis_with_labels => 'y', 
+            :labels => x_data,
+            :size => '400x200'
+             )
+    
+  end
+  
 end
