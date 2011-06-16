@@ -15,3 +15,7 @@ group :development do
   gem 'database_cleaner'
   gem 'jquery-rails', '>= 1.0.3'
 end
+
+group :test, :cucumber do 
+  gem 'rspec-rails'
+end
