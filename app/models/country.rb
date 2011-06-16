@@ -4,6 +4,7 @@ class Country < ActiveRecord::Base
   validates_presence_of :name, :code
   validates_uniqueness_of :code, :scope => :user_id
 
+  belongs_to :user
   has_many :currencies, :dependent => :destroy
   scope :visited, where('visited_at is not ?', nil)
   scope :not_visited, where(:visited_at => nil)

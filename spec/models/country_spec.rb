@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Country do
   
-  it "does something" do
-    p '1111111111111'
+  it "should be valid" do
+    Factory :country
   end
 end
