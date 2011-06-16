@@ -9,14 +9,14 @@ group :development do
   gem 'googlecharts'
   gem 'devise'
   gem 'mysql'
-  gem 'cucumber'
-  gem 'cucumber-rails'
-  gem 'capybara'
-  gem 'database_cleaner'
   gem 'jquery-rails', '>= 1.0.3'
 end
 
 group :test, :cucumber do 
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'mocha'
